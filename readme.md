@@ -14,15 +14,15 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 * *Silent Hill 3* (DX8) - *Includes smart mipmap bypassing*
 
 <details>
-<summary>📸 **Click to compare (Screenshots Before / After)**</summary>
+<summary>📸 Click to compare (Screenshots Before / After)</summary>
 <p>
 
 ### Need for Speed: Underground
-**До (Размытое мыло):**
-![NFS Before](screenshots/nfs_before.png)
+**Before (Bilinear):**
+![NFS Before](screenshots/nfs_bilinear1.png)
 
-**После (Четкий Pixel-Perfect):**
-![NFS After](screenshots/nfs_after.png)
+**After (Point):**
+![NFS After](screenshots/nfs_point1.png)
 
 ---
 
