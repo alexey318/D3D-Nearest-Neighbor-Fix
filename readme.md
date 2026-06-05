@@ -13,15 +13,6 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 * *Devil May Cry 3* (DX9)
 * *Silent Hill 3* (DX8) - *Includes smart mipmap bypassing*
 
-## 🛠️ Installation
-1. Go to the **[Releases](../../releases)** tab on the right side of this page.
-2. Download the latest `.zip` archive.
-3. Extract `d3d9.dll` (for DirectX 9 games) or `d3d8.dll` (for DirectX 8 games) into the folder where the game's main `.exe` is located.
-4. Launch the game and enjoy crisp pixels! *A `proxy_log.txt` will be generated in the game folder to confirm the wrapper is active.*
-
-## ⚙️ How it Works (Under the Hood)
-Unlike standard wrappers that simply create a proxy VTable, this project uses **Inline Trampoline Hooking**. Many older games or third-party mods (like Widescreen Fixes) wrap the Direct3D device, bypassing standard VTable hooks. This wrapper directly patches the binary machine code of `d3d9.dll` and `d3d8.dll` in memory for functions like `SetTexture` and `SetSamplerState`, ensuring the filtering override cannot be bypassed by the game engine.
-
 <details>
 <summary>📸 Нажми, чтобы посмотреть сравнение (Скриншоты До / После)</summary>
 <p>
@@ -45,5 +36,14 @@ Unlike standard wrappers that simply create a proxy VTable, this project uses **
 </p>
 </details>
 
+## 🛠️ Installation
+1. Go to the **[Releases](../../releases)** tab on the right side of this page.
+2. Download the latest `.zip` archive.
+3. Extract `d3d9.dll` (for DirectX 9 games) or `d3d8.dll` (for DirectX 8 games) into the folder where the game's main `.exe` is located.
+4. Launch the game and enjoy crisp pixels! *A `proxy_log.txt` will be generated in the game folder to confirm the wrapper is active.*
+
+## ⚙️ How it Works (Under the Hood)
+Unlike standard wrappers that simply create a proxy VTable, this project uses **Inline Trampoline Hooking**. Many older games or third-party mods (like Widescreen Fixes) wrap the Direct3D device, bypassing standard VTable hooks. This wrapper directly patches the binary machine code of `d3d9.dll` and `d3d8.dll` in memory for functions like `SetTexture` and `SetSamplerState`, ensuring the filtering override cannot be bypassed by the game engine.
+
 ## 🤝 Credits
-Developed by [alexey318] and inspired by the pursuit of preserving retro game aesthetics.
+Developed by [alexey318] / [User09] and inspired by the pursuit of preserving retro game aesthetics.
