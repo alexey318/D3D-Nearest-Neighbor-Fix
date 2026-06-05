@@ -19,10 +19,18 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 
 ### Need for Speed: Underground
 **Before (Bilinear):**
-![NFS Before](screenshots/nfs_bilinear1.png)
+![NFS Before](screenshots/nfsu_bilinear1.png)
 
 **After (Point):**
-![NFS After](screenshots/nfs_point1.png)
+![NFS After](screenshots/nfsu_point1.png)
+
+---
+
+**Before (Bilinear):**
+![NFS Before](screenshots/nfsu_bilinear2.png)
+
+**After (Point):**
+![NFS After](screenshots/nfsu_point2.png)
 
 ---
 
