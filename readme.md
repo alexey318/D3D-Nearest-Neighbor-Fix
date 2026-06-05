@@ -62,30 +62,31 @@ Unlike standard wrappers that simply create a proxy VTable, this project uses **
 
 ### Need for Speed: Underground (EA EAGL engine)
 
-What the problem was: The game flat-out ignored standard proxy DLLs that merely replaced the VTable. Logs showed hooks appeared to be installed, but textures remained blurry.
+**The Issue:** The game completely ignored standard proxy VTables. While hooks appeared to be successfully deployed, texture filtering in the game remained blurry and unaffected.
 
-Engine quirk: EA’s EAGL engine works very aggressively and directly with GPU state. It has a built-in manager for textures and graphics states. On device initialization or Reset the game forcefully overwrites SetSamplerState with its own values, completely wiping out any standard hooks.
+**Engine Behavior:** The EAGL engine interacts directly and aggressively with the GPU state machine. It utilizes an internal texture and state manager that overwrites `SetSamplerState` calls with its own hardcoded values during device initialization and screen resets, effectively wiping out conventional software hooks.
 
-How I defeated it: Ordinary pointer swapping is powerless here. I used an aggressive inline assembly trampoline. Our code is injected directly into the “body” of the original system d3d9.dll in RAM and intercepts control at the CPU instruction level. Wherever the EA engine calls, it cannot physically bypass our trampoline.
+**Resolution:** To bypass the engine's internal state management, an **Inline Assembly Trampoline Hook** was implemented. The wrapper intercepts execution at the machine-code level inside the system `d3d9.dll` in memory. This ensures that regardless of the engine's internal overrides, execution is forcibly rerouted to enforce the pixel-perfect filtering parameters.
 
 ---
 
 ### Devil May Cry 3: Dante's Awakening (Capcom engine)
-What the problem was: When trying to run the game with early versions of the wrapper, it either froze hard during initialization or crashed to a blue screen/exit without explanation.
 
-Engine quirk: This PC port from Capcom is infamous among bad ports. The engine violates DirectX conventions. Instead of creating one stable device and using it, the game can dynamically destroy the old device and create a new one while loading levels and cutscenes. Moreover, the game tries to control the integrity of certain libraries. When a standard hook called the original function, CPU registers got confused, the stack broke, and the game crashed.
+**The Issue:** Early wrapper implementations caused immediate application hangs, crashes, or segmentation faults during game initialization and scene transitions.
 
-How I defeated it: I created a “jewel” trampoline. Our assembly code doesn’t just redirect the call — it meticulously preserves the state of all CPU registers (EAX, ECX, etc.), substitutes filtering with D3DTEXF_POINT, and carefully restores the stack. For the picky DMC3 engine it appears as if the native system executed, so the game runs stably with no lag.
+**Engine Behavior:** This PC port features a highly unstable rendering architecture that frequently breaks DirectX lifecycle standards. The engine dynamically destroys and recreates the Direct3D device context when loading levels and cutscenes. Furthermore, the engine performs low-level stack integrity checks. Standard function hooking alters the expected CPU register states, leading to stack corruption upon returning to the game code.
+
+**Resolution:** A highly precise naked assembly hook was developed. The wrapper meticulously saves the state of all CPU registers (`EAX`, `ECX`, etc.) before execution, safely forces `D3DTEXF_POINT` filtering, and carefully restores the stack pointer to its exact original state. This allows the wrapper to remain completely transparent to the game's strict execution checks, resulting in rock-solid stability.
 
 ---
 
 ### Silent Hill 3 (Team Silent / Konami engine)
 
-What the problem was: The trickiest opponent. Besides being a DirectX 8-era game (requiring a separate d3d8.dll wrapper), forcing nearest-neighbor broke all graphics: the screen wildly zoomed, the UI shifted, and textures started flickering and doubling.
+**The Issue:** This title runs on **DirectX 8** (requiring a custom `d3d8.dll` wrapper). Forcing global Nearest Neighbor filtering completely broke the game's rendering pipeline, causing extreme screen zooming, displaced UI coordinates, and severe texture shimmering.
 
-Engine quirk: Team Silent used a clever trick to create the game’s oppressive atmosphere (fog, noise, and blur effects). The engine uses very low-resolution textures for post-processing and mipmap generation. When I forced everything to render with hard pixels (point filtering), the engine went haywire: it applied pixel filtering to UI and screen-effect textures, causing geometric collapse and scale distortion (a scaling bug).
+**Engine Behavior:** The Team Silent engine uses a clever rendering trick to produce its signature atmospheric fog, noise, and motion blur effects. It dynamically generates low-resolution render targets and applies automatic mipmapping for post-processing layers. Enforcing a rigid point-filtering method globally forces the engine to apply pixelated scaling to post-processing buffers and UI elements, destroying the game's internal coordinate scaling.
 
-How I defeated it: I taught our wrapper to “think.” In the DX8 code I implemented an intelligent call filter. The wrapper checks the parameters of each SetTextureStageState call. If it detects the game is setting up a UI texture or a specific fullscreen effect, the wrapper gracefully yields and allows the standard filtering. But as soon as it’s a 3D game texture (walls, monsters, roads), our hard pixel-perfect filter is applied.
+**Resolution:** An **Intelligent State Filter** was built into the DirectX 8 wrapper. The hook intercepts every `SetTextureStageState` call and evaluates its context. If the engine attempts to configure texture states for UI rendering or specific fullscreen post-processing buffers, the wrapper steps aside and permits standard bilinear filtration. Point filtering is selectively enforced only when 3D world geometry and environmental textures are being processed, preserving both the pixel-perfect texture aesthetic and the correct screen geometry.
 
 </p>
 </details>
