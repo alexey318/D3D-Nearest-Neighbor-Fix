@@ -18,28 +18,28 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 <p>
 
 ### Need for Speed: Underground
-**Before (Bilinear):**
+**Before (Bilinear):**</br>
 ![NFS Before](screenshots/nfsu_bilinear1.png)
 
-**After (Point):**
+**After (Point):**</br>
 ![NFS After](screenshots/nfsu_point1.png)
 
 ---
 
 ### Devil May Cry 3
-**Before (Bilinear):**
+**Before (Bilinear):**</br>
 ![DMC Before](screenshots/dmc_bilinear2.png)
 
-**After (Point):**
+**After (Point):**</br>
 ![DMC After](screenshots/dmc_point2.png)
 
 ---
 
 ### Silent Hill 3
-**Before (Bilinear):**
+**Before (Bilinear):**</br>
 ![SH3 Before](screenshots/sh3_bilinear1.png)
 
-**After (Point):**
+**After (Point):**</br>
 ![SH3 After](screenshots/sh3_point1.png)
 
 </p>
