@@ -44,6 +44,7 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 
 </p>
 </details>
+More screenshots in folder !/screenshots
 
 ## 🛠️ Installation
 1. Go to the **[Releases](../../releases)** tab on the right side of this page.
