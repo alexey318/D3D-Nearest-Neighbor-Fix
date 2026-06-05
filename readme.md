@@ -44,7 +44,7 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 
 </p>
 </details>
-More screenshots in folder !/screenshots
+More screenshots in folder [!/screenshots](https://github.com/alexey318/D3D-Nearest-Neighbor-Fix/tree/9afbe54b7fb96d6e8caadd9c8f60fff2f7e17bd0/screenshots)
 
 ## 🛠️ Installation
 1. Go to the **[Releases](../../releases)** tab on the right side of this page.
