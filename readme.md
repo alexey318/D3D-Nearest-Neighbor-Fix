@@ -14,7 +14,7 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 * *Silent Hill 3* (DX8) - *Includes smart mipmap bypassing*
 
 <details>
-<summary>📸 Нажми, чтобы посмотреть сравнение (Скриншоты До / После)</summary>
+<summary>📸 **Click to compare (Screenshots Before / After)**</summary>
 <p>
 
 ### Need for Speed: Underground
