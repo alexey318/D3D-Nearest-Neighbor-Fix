@@ -26,20 +26,21 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 
 ---
 
+### Devil May Cry 3
 **Before (Bilinear):**
-![NFS Before](screenshots/nfsu_bilinear2.png)
+![DMC Before](screenshots/dmc_bilinear2.png)
 
 **After (Point):**
-![NFS After](screenshots/nfsu_point2.png)
+![DMC After](screenshots/dmc_point2.png)
 
 ---
 
 ### Silent Hill 3
-**До:**
-![SH3 Before](screenshots/sh3_before.png)
+**Before (Bilinear):**
+![SH3 Before](screenshots/sh3_bilinear1.png)
 
-**После:**
-![SH3 After](screenshots/sh3_after.png)
+**After (Point):**
+![SH3 After](screenshots/sh3_point1.png)
 
 </p>
 </details>
