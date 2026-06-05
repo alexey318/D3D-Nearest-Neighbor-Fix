@@ -22,5 +22,28 @@ A lightweight, zero-overhead Direct3D 8 and Direct3D 9 wrapper designed to force
 ## ⚙️ How it Works (Under the Hood)
 Unlike standard wrappers that simply create a proxy VTable, this project uses **Inline Trampoline Hooking**. Many older games or third-party mods (like Widescreen Fixes) wrap the Direct3D device, bypassing standard VTable hooks. This wrapper directly patches the binary machine code of `d3d9.dll` and `d3d8.dll` in memory for functions like `SetTexture` and `SetSamplerState`, ensuring the filtering override cannot be bypassed by the game engine.
 
+<details>
+<summary>📸 Нажми, чтобы посмотреть сравнение (Скриншоты До / После)</summary>
+<p>
+
+### Need for Speed: Underground
+**До (Размытое мыло):**
+![NFS Before](screenshots/nfs_before.png)
+
+**После (Четкий Pixel-Perfect):**
+![NFS After](screenshots/nfs_after.png)
+
+---
+
+### Silent Hill 3
+**До:**
+![SH3 Before](screenshots/sh3_before.png)
+
+**После:**
+![SH3 After](screenshots/sh3_after.png)
+
+</p>
+</details>
+
 ## 🤝 Credits
 Developed by [alexey318] and inspired by the pursuit of preserving retro game aesthetics.
