@@ -92,4 +92,4 @@ Unlike standard wrappers that simply create a proxy VTable, this project uses **
 </details>
 
 ## 🤝 Credits
-Developed by [alexey318] / [User09] and inspired by the pursuit of preserving retro game aesthetics.
+Developed by [alexey318 / User09] and inspired by the pursuit of preserving retro game aesthetics.
